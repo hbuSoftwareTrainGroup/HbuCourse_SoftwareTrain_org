@@ -1,0 +1,23 @@
+{
+  "main": "index.html",
+  "name": "appname",
+  "description": "这是应用描述，main表示入口文件",
+  "version": "0.0.1",
+  "window": {
+    "title": "应用的名称",
+    "icon": "app/static/img/logo.jpg",
+    "toolbar": true,
+    "frame": true,
+    "width": 1008,
+    "height": 750,
+    "position": "center",
+    "min_width": 400,
+    "min_height": 200
+  },
+  "webkit": {
+    "plugin": true,
+    "java": false,
+    "page-cache": false
+  },
+  "chromium-args" :"-allow-file-access-from-files"
+}
