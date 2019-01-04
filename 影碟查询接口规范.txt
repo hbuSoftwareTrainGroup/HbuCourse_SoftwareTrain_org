@@ -4,6 +4,7 @@
 	如果没有找到，则提示未找到，并返回查询影响系统的主界面。
 js->php
 
+mark=1(查询标记)
 video_name(片名)
 
 
@@ -26,6 +27,7 @@ stock(库存)
 
 js->php
 
+mark=2(查询标记)
 serial_number(编号)
 
 php->js
@@ -46,6 +48,7 @@ stock(库存)
 
 js->php
 
+mark=3(查询标记)
 lead_actor(主演)
 
 php->js
