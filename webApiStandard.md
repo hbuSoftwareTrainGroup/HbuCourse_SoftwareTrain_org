@@ -69,6 +69,7 @@ js->php:
 ---|:--:|---:
 video_disk_id|int|影碟的id
 username|char|姓名
+phone|char|用户手机号
 rental_date|char|出租日期
 return_date|char|归还日期
 rental|double|租金
@@ -107,6 +108,9 @@ return_date|char|归还日期
 rental|double|租金
 deposit|double|押金
 receipt_id|char|发票号
+以上包含在res中||
+code|int|返回码（200为操作成功，503 为操作失败）
+state|char|返回的详细信息
 *****
 
 ### 按片名查询
@@ -125,6 +129,7 @@ video_name|char|影碟名称
 lead_actor|char|主演
 stock|int|现存张数
 serial_number|char|影碟编号
+以上包含在res中||
 code|int|返回码（200为操作成功，503 为操作失败）
 state|char|返回的详细信息
 *****
@@ -145,6 +150,7 @@ video_name|char|影碟名称
 lead_actor|char|主演
 stock|int|现存张数
 serial_number|char|影碟编号
+以上包含在res中||
 code|int|返回码（200为操作成功，503 为操作失败）
 state|char|返回的详细信息
 *****
@@ -166,6 +172,7 @@ video_name|char|影碟名称
 lead_actor|char|主演
 stock|int|现存张数
 serial_number|char|影碟编号
+以上包含在res中||
 code|int|返回码（200为操作成功，503 为操作失败）
 state|char|返回的详细信息
 *****
@@ -179,6 +186,7 @@ video_disk_id|int|影碟的id
 php->js:
 名称|类型|含义
 ---|:--:|---:
+url|char|播放链接
 code|int|返回码（200为操作成功，503 为操作失败）
 state|char|返回的详细信息
 *****

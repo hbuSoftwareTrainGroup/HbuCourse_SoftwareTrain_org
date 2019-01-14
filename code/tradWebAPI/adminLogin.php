@@ -6,15 +6,16 @@
  * Time: 15:33
  */
 require_once 'readAndPrint.class.php';
-require_once 'common.php';
+require_once 'dataBase.class.php';
 
 $RAP = new readAndPrint();
 $username = $RAP->inputStream()->{'username'};
 $password = $RAP->inputStream()->{'password'};
 
-$model = M();
+$dataBase = new dataBase();
+$dataBase->open();
 $sql = "select * from `admin_account` where (`username`='$username' && `password`='$password')";
-$list = $model->select($sql);
+$list = mysql_fetch_array($dataBase->select($sql));
 
 if(isset($list[0])){
     $data=array(

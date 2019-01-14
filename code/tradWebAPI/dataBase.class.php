@@ -15,8 +15,7 @@ class dataBase
     }
     public function select($sql){
         $res=mysql_query($sql);
-        $end=mysql_fetch_array($res);
-        return $end;
+        return $res;
     }
     public function insert($sql){
         $res=mysql_query($sql);
