@@ -23,9 +23,8 @@ class dataBase
         return $res;
     }
     public function update($sql){
-        $link=@mysql_connect("localhost","root","root");
-        mysql_select_db("shopping",$link);
-        mysql_query("set names utf8");
+        $res=mysql_query($sql);
+        return $res;
     }
     public function dalete($sql){
         $link=@mysql_connect("localhost","root","root");

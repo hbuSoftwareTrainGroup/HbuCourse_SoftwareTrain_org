@@ -36,6 +36,7 @@ state|char|返回的详细信息
 js->php:
 名称|类型|含义
 ---|:--:|---:
+id|char|影碟的id
 position|char|影碟存放位置
 price|double|影碟价格
 video_name|char|影碟名称
