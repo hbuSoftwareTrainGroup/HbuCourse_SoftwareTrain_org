@@ -26,9 +26,8 @@ class dataBase
         $res=mysql_query($sql);
         return $res;
     }
-    public function dalete($sql){
-        $link=@mysql_connect("localhost","root","root");
-        mysql_select_db("shopping",$link);
-        mysql_query("set names utf8");
+    public function delete($sql){
+        $res=mysql_query($sql);
+        return $res;
     }
 }
