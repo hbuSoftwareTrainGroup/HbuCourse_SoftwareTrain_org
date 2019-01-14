@@ -1,4 +1,5 @@
 ### 管理员登录
+文件adminLogin.php
 js->php:
 名称|类型|含义
 ---|:--:|---:
@@ -59,6 +60,52 @@ php->js:
 ---|:--:|---:
 code|int|返回码（200为操作成功，503 为操作失败）
 state|char|返回的详细信息
+*****
+
+### 影碟出租
+js->php:
+名称|类型|含义
+---|:--:|---:
+video_disk_id|int|影碟的id
+username|char|姓名
+rental_date|char|出租日期
+return_date|char|归还日期
+rental|double|租金
+deposit|double|押金
+receipt_id|char|发票号
+
+php->js:
+名称|类型|含义
+---|:--:|---:
+code|int|返回码（200为操作成功，503 为操作失败）
+state|char|返回的详细信息
+*****
+
+### 影碟退还
+js->php:
+名称|类型|含义
+---|:--:|---:
+order_id|int|订单的id
+
+php->js:
+名称|类型|含义
+---|:--:|---:
+code|int|返回码（200为操作成功，503 为操作失败）
+state|char|返回的详细信息
+*****
+
+### 订单查询
+php->js:
+名称|类型|含义
+---|:--:|---:
+order_id|int|订单的id
+video_disk_id|int|影碟的id
+username|char|姓名
+rental_date|char|出租日期
+return_date|char|归还日期
+rental|double|租金
+deposit|double|押金
+receipt_id|char|发票号
 *****
 
 ### 按片名查询
