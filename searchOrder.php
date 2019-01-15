@@ -10,10 +10,10 @@ $RAP = new readAndPrint();
 $dataBase = new dataBase();
 
 $dataBase->open();
-$sql = "select compact_disk.id as video_disk_id,user_account.username,order.rental_date,order.return_date,order.rental,order.deposit,order.receipt_id
-            from `compact_disk`,`order`,`user_account` 
-			    where compact_disk.id = order.compact_disk_id 
-					and user_account.id = order.user_id";
+$sql = "select the_order.id as order_id,compact_disk.id as video_disk_id,user_account.username,rental_date,return_date,rental,deposit,receipt_id
+            from `compact_disk`,`the_order`,`user_account` 
+			    where compact_disk.id = the_order.compact_disk_id 
+					and user_account.id = the_order.user_id";
 $res = $dataBase->selectAll($sql);//查询结果封装成数组
 if($res){
 	$data=array(
