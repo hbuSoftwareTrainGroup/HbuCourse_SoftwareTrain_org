@@ -63,8 +63,6 @@ if($selectCompactDiskResult["stock"]>0){
             //增加一个订单
             $sqlInsertOrder = "INSERT INTO the_order(`deposit`,`user_id`,`compact_disk_id`,`receipt_id`,`state`,`rental`,`rental_date`,`return_date`) VALUES ('$deposit','$userID','$tmpCompactDiskId','$receipt_id','0','$rental','$rental_date','$return_date')";
             $resInsertOrder = $dataBase->insert($sqlInsertOrder);
-//            var_dump($sqlInsertOrder);
-//            exit(0);
             if(!$resInsertOrder){
                 $data=array(
                     'code'=>503,
