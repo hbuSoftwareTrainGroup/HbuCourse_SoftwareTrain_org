@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a01007dc-a031-48e6-aaa2-787800091e04" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tradWebAPI/playCompactDisk.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../~$出租管理系统.docx" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +72,7 @@
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="278" />
     <option name="y" value="-15" />
     <option name="width" value="816" />
@@ -151,16 +150,15 @@
       <workItem from="1547448164394" duration="10634000" />
       <workItem from="1547468258212" duration="4115000" />
       <workItem from="1547533337242" duration="6499000" />
-      <workItem from="1547540475826" duration="465000" />
+      <workItem from="1547540475826" duration="831000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26639000" />
+    <option name="totallyTimeSpent" value="27005000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27231467" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
