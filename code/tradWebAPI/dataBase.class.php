@@ -19,6 +19,7 @@ class dataBase
     }
     public function selectAll($sql){
         $res=mysql_query($sql);
+        $end = array();
         while($rows=mysql_fetch_array($res)){
             $end[]=$rows;
         }
