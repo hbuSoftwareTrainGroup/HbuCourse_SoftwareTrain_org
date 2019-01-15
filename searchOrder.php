@@ -9,13 +9,12 @@ require_once 'dataBase.class.php';
 $RAP = new readAndPrint();
 $dataBase = new dataBase();
 
-$receiveData = $RAP->inputStream();
-//$order_id = $receiveData->{'order_id'};
-$order_id=2;
-
 $dataBase->open();
-$sql = "select * from `order` where `id`='$order_id'";
-$res = $dataBase->select($sql);//查询结果封装成数组
+$sql = "select compact_disk.id as video_disk_id,user_account.username,order.rental_date,order.return_date,order.rental,order.deposit,order.receipt_id
+            from `compact_disk`,`order`,`user_account` 
+			    where compact_disk.id = order.compact_disk_id 
+					and user_account.id = order.user_id";
+$res = $dataBase->selectAll($sql);//查询结果封装成数组
 if($res){
 	$data=array(
 		'res'=>$res,//查询结果
@@ -28,6 +27,7 @@ if($res){
 		'state'=>"不存在该订单"
 	);
 }
+//print_r($res);
 echo $RAP->outputStream($data);
 
 
