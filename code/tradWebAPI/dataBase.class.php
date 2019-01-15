@@ -30,7 +30,7 @@ class dataBase
     }
     public function update($sql){
         $res=mysql_query($sql);
-        return $res;
+        return mysql_affected_rows();
     }
     public function delete($sql){
         $res=mysql_query($sql);

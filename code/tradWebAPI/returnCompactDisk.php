@@ -18,7 +18,8 @@ $theOrderId = $receiveData->{'order_id'};
 $dataBase->open();
 
 $sqlUpdate = "UPDATE `the_order` SET `state`='1' WHERE `id` = '$theOrderId'";
-$updateResult =($dataBase->update($sqlUpdate));
+$updateResult =$dataBase->update($sqlUpdate);
+
 if($updateResult){
     $data=array(
         'code'=>200,
@@ -27,7 +28,7 @@ if($updateResult){
 }else{
     $data=array(
         'code'=>503,
-        'state'=>"出归还失败"
+        'state'=>"归还失败"
     );
 }
 
