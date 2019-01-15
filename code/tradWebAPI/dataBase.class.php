@@ -17,6 +17,13 @@ class dataBase
         $res=mysql_query($sql);
         return $res;
     }
+    public function selectAll($sql){
+        $res=mysql_query($sql);
+        while($rows=mysql_fetch_array($res)){
+            $end[]=$rows;
+        }
+        return $end;
+    }
     public function insert($sql){
         $res=mysql_query($sql);
         return $res;
