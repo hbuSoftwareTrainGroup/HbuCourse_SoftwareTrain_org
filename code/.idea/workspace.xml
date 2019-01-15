@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a01007dc-a031-48e6-aaa2-787800091e04" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/tradWebAPI/dataBase.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/tradWebAPI/dataBase.class.php" afterDir="false" />
-    </list>
+    <list default="true" id="a01007dc-a031-48e6-aaa2-787800091e04" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tradWebAPI/dataBase.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+            <state relative-caret-position="195">
+              <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -110,7 +108,7 @@
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="278" />
     <option name="y" value="-15" />
     <option name="width" value="816" />
@@ -187,16 +185,15 @@
       <workItem from="1546565522692" duration="103000" />
       <workItem from="1547448164394" duration="10634000" />
       <workItem from="1547468258212" duration="4115000" />
-      <workItem from="1547533337242" duration="5867000" />
+      <workItem from="1547533337242" duration="6499000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25542000" />
+    <option name="totallyTimeSpent" value="26174000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2685325" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -315,8 +312,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tradWebAPI/dataBase.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+        <state relative-caret-position="195">
+          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
         </state>
       </provider>
     </entry>
