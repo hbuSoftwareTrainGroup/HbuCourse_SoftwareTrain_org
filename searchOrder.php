@@ -10,7 +10,7 @@ $RAP = new readAndPrint();
 $dataBase = new dataBase();
 
 $dataBase->open();
-$sql = "select the_order.id as order_id,compact_disk.id as video_disk_id,user_account.username,rental_date,return_date,rental,deposit,receipt_id
+$sql = "select the_order.id as order_id,compact_disk.id as video_disk_id,user_account.username,rental_date,return_date,rental,deposit,receipt_id,state
             from `compact_disk`,`the_order`,`user_account` 
 			    where compact_disk.id = the_order.compact_disk_id 
 					and user_account.id = the_order.user_id";
