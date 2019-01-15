@@ -1,0 +1,67 @@
+1.按片名查询
+用户输入待查找的片名，以此为关键字进行查找。
+	如果找到，则显示此片的所有信息（包括存放的位置信息）；
+	如果没有找到，则提示未找到，并返回查询影响系统的主界面。
+js->php
+
+mark=1(查询标记)
+video_name(片名)
+
+
+php->js
+
+serial_number(编号)
+video_name(片名)
+lead_actor(主演)
+position(位置信息)
+price(价格)
+stock(库存)
+
+
+200 查询到
+204 查询结果为空
+
+2.输入影片编号，以此为关键字进行查找。
+	如果找到，则显示此片的所有信息（包括存放的位置信息）；
+	如果没有找到，则提示未找到，并返回查询影响系统的主界面。
+
+js->php
+
+mark=2(查询标记)
+serial_number(编号)
+
+php->js
+
+serial_number(编号)
+video_name(片名)
+lead_actor(主演)
+position(位置信息)
+price(价格)
+stock(库存)
+
+200 查询到
+204 查询结果为空
+
+3.输入主演姓名，以此为关键字进行查找。
+	如果找到，则显示此片的所有信息（包括存放的位置信息）；
+	如果没有找到，则提示未找到，并返回查询影响系统的主界面。
+
+js->php
+
+mark=3(查询标记)
+lead_actor(主演)
+
+php->js
+
+serial_number(编号)
+video_name(片名)
+lead_actor(主演)
+position(位置信息)
+price(价格)
+stock(库存)
+
+200 查询到
+204 查询结果为空
+
+
+
