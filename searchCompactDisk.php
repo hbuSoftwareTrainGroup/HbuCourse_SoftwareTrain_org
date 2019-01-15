@@ -13,14 +13,15 @@ $dataBase = new dataBase();
 
 $receiveData = $RAP->inputStream();
 $mark = $receiveData->{'mark'};
-
+//$mark = 1;
 
 switch ($mark){
     case 1:
 		$video_name = $receiveData->{'video_name'};
+		//$video_name="笑傲江湖";
 		$dataBase->open();
 		$sql = "select * from compact_disk where `video_name`='$video_name'";
-		$res = $dataBase->select($sql);//查询结果封装成数组
+		$res = $dataBase->selectAll($sql);//查询结果封装成数组
 		if($res){
 			$data=array(
 				'res'=>$res,//查询结果
@@ -33,13 +34,14 @@ switch ($mark){
 				'state'=>"不存在该影片"
 			);
 		}
+		//print_r($res);
 		echo $RAP->outputStream($data);
         break;
     case 2:
 		$lead_actor = $receiveData->{'lead_actor'};
 		$dataBase->open();
 		$sql = "select * from compact_disk where `lead_actor`='$lead_actor'";
-		$res = $dataBase->select($sql);//查询结果封装成数组
+		$res = $dataBase->selectAll($sql);//查询结果封装成数组
 		if($res){
 			$data=array(
 				'res'=>$res,
@@ -58,7 +60,7 @@ switch ($mark){
 		$serial_number = $receiveData->{'serial_number'};
 		$dataBase->open();
 		$sql = "select * from compact_disk where `serial_number`='$serial_number'";
-		$res = $dataBase->select($sql);//查询结果封装成数组
+		$res = $dataBase->selectAll($sql);//查询结果封装成数组
 		if($res){
 			$data=array(
 				'res'=>$res,
