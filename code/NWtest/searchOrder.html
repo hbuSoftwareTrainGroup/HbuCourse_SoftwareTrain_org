@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<link href="ui/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="ui/css/bootstrap-themes.css" rel="stylesheet" type="text/css">
+<link href="ui/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="ui/js/npm.js"></script>
+<script type="text/javascript" src="ui/js/bootstrap.js"></script>
+<script type="text/javascript" src="ui/js/bootstrap.min.js"></script>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Search Order</title>
+	<link rel="stylesheet" type="text/css" href="public.css">
+</head>
+<body onload="ajax_method('http://127.0.0.1/tradWebAPI/searchOrder.php')">
+<div class="jumbotron">
+  <h1>影碟出租管理系统</h1>
+  <p>Video rental Management System</p>
+	<a href="adminLogin.html" class="btn btn-primary" role="button">注销登录</a>
+</div>
+<ul class="nav nav-pills nav-justified " style="margin-top:-30px;">
+  <li role="presentation" ><a href="addCompactDisk.html">影碟入库</a></li>
+  <li role="presentation"><a href="updateCompactDisk.html">影碟更新</a></li>
+  <li role="presentation"><a href="deleteCompactDisk.html">影碟删除</a></li>
+  <li role="presentation"><a href="leaseCompactDisk.html">影碟出租</a></li>
+  <li role="presentation"><a href="returnCompactDisk.html">影碟退还</a></li>
+  <li role="presentation"class="active"><a href="searchOrder.html">订单查询</a></li>
+</ul>
+	<script type="text/javascript">
+		function ajax_method(url) {
+		  var xhr = new XMLHttpRequest();
+		  
+		  xhr.onreadystatechange = function() {
+		    if(xhr.readyState==4 && xhr.status==200) {
+		        var data = JSON.parse(xhr.responseText);
+		        var output = '';
+		        if (data.code == 200) {
+		            if (data.res != null) {
+		              for(var i in data.res) {		                
+		                output += `
+		                  <ul>
+		                    <li>订单id : ${data.res[i].order_id}</li>
+		                    <li>影碟id : ${data.res[i].video_disk_id}</li>
+		                    <li>用户姓名 : ${data.res[i].username}</li>
+		                    <li>出租日期 : ${data.res[i].rental_date}</li>
+		                    <li>归还日期 : ${data.res[i].return_date}</li>
+		                    <li>租金 : ${data.res[i].rental}</li>
+		                    <li>押金 : ${data.res[i].deposit}</li>
+		                    <li>发票号 : ${data.res[i].receipt_id}</li>
+		                  </ul>
+		                `;
+		              }
+		              document.getElementById("result").innerHTML = output;	              
+		            }else{
+		              alert(data.state);
+		            }
+		        } else {
+		            alert(data.state);
+		        }
+		    }
+		  }
+
+		  xhr.open("GET", url, true);
+		  xhr.send();
+		}
+	</script>
+
+	<form>
+		<!-- <input type="button" value="GET" onclick="ajax_method('searchOrder.php')"> -->
+		<div id="result"></div>
+	</form>
+</body>
+</html>

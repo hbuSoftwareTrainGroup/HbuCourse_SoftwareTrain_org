@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Return Compact Disk</title>
+	<link rel="stylesheet" type="text/css" href="public.css">
+	<link href="ui/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="ui/css/bootstrap-themes.css" rel="stylesheet" type="text/css">
+	<link href="ui/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="ui/js/npm.js"></script>
+	<script type="text/javascript" src="ui/js/bootstrap.js"></script>
+	<script type="text/javascript" src="ui/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron">
+  <h1>影碟出租管理系统</h1>
+  <p>Video rental Management System</p>
+</div>
+<ul class="nav nav-pills nav-justified " style="margin-top:-30px;">
+	<li role="presentation" ><a href="searchCompactDisk.html">影碟查询</a></li>
+	<li role="presentation"><a href="videoRecommend.html">影碟推荐</a></li>
+	<li role="presentation" class="active"><a href="playCompactDisk.html">影碟预览</a></li>
+</ul>
+	<script type="text/javascript">
+		function playCompactDisk() {
+			var video_disk_id = document.getElementById('video_disk_id').value;
+			var data = {
+				"video_disk_id": video_disk_id
+			};
+
+			return data;
+		}
+
+		function ajax_method(url, data) {
+			  var xhr = new XMLHttpRequest();
+
+			  xhr.onreadystatechange = function() {
+			    if(xhr.readyState==4 && xhr.status==200) {
+			        var data = JSON.parse(xhr.responseText);
+			        if (data.code == 200) {
+						playVideo(data.url);
+
+			        } else {
+			            alert(data.state);
+			        }
+			    }
+			  }
+
+			  xhr.open("POST", url, true);		  
+			  xhr.setRequestHeader("Content-Type","application/json");
+			  xhr.send(JSON.stringify(data));
+		}
+	</script>
+	<form>
+		影碟ID:<br>
+		<input type="text" id="video_disk_id"><br>
+		<input type="button" value="Submit" onclick="ajax_method('http://127.0.0.1/tradWebAPI/playCompactDisk.php', playCompactDisk())">
+	</form>
+
+	<script>
+		function playVideo(url){
+			document.write("<center>");
+			document.write("<input type='button' name='Submit' onclick='javascript:history.back(-1);' value='返回上一页'>");
+			document.write("<br>");
+			document.write("<br>");
+			document.write("<br>");
+			document.write("<video width=\"320\" height=\"240\" controls=\"controls\" autoplay=\"autoplay\">");
+			document.write("<source id=\"theVideo\" src=\"");
+			document.write(url);
+			document.write("\" type=\"video/mp4\" />");
+			document.write("</video>");
+			document.write("</center>");
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<link href="ui/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="ui/css/bootstrap-themes.css" rel="stylesheet" type="text/css">
+<link href="ui/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="ui/js/npm.js"></script>
+<script type="text/javascript" src="ui/js/bootstrap.js"></script>
+<script type="text/javascript" src="ui/js/bootstrap.min.js"></script>
+
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Delete Compact Disk</title>
+	<link rel="stylesheet" type="text/css" href="public.css">
+</head>
+<body>
+<div class="jumbotron">
+  <h1>影碟出租管理系统</h1>
+  <p>Video rental Management System</p>
+	<a href="adminLogin.html" class="btn btn-primary" role="button">注销登录</a>
+</div>
+<ul class="nav nav-pills nav-justified " style="margin-top:-30px;">
+  <li role="presentation" ><a href="addCompactDisk.html">影碟入库</a></li>
+  <li role="presentation"><a href="updateCompactDisk.html">影碟更新</a></li>
+  <li role="presentation"class="active"><a href="deleteCompactDisk.html">影碟删除</a></li>
+  <li role="presentation"><a href="leaseCompactDisk.html">影碟出租</a></li>
+  <li role="presentation"><a href="returnCompactDisk.html">影碟退还</a></li>
+    <li role="presentation"><a href="searchOrder.html">订单查询</a></li>
+</ul>
+	<script type="text/javascript">
+		function deleteCompactDisk() {
+			var video_disk_id = document.getElementById('video_disk_id').value;
+			var data = {
+				"video_disk_id": video_disk_id
+			}
+			return data;
+		}
+		function ajax_method(url, data) {
+			  var xhr = new XMLHttpRequest();
+			  
+			  xhr.onreadystatechange = function() {
+			    if(xhr.readyState==4 && xhr.status==200) {
+			        var data = JSON.parse(xhr.responseText);
+			        if (data.code == 200) {                   
+			            alert(data.state);
+			        } else {
+			            alert(data.state);
+			        }
+			    }
+			  }
+
+			  xhr.open("POST", url, true);		  
+			  xhr.setRequestHeader("Content-Type","application/json");
+			  xhr.send(JSON.stringify(data));
+		}
+	</script>
+	<form>
+		影碟ID:<br>
+		<input type="text" id="video_disk_id"><br>
+		<input type="button" value="Submit" onclick="ajax_method('http://127.0.0.1/tradWebAPI/deleteCompactDisk.php', deleteCompactDisk())">
+	</form>
+	
+</body>
+</html>

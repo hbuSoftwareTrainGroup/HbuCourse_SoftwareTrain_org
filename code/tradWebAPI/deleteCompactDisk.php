@@ -16,6 +16,7 @@ $video_disk_id = $receiveData->{'video_disk_id'};
 
 $dataBase->open();
 $sql = "delete from `compact_disk` WHERE `id` = '$video_disk_id'";
+
 $res = $dataBase->delete($sql);
 
 if($res){

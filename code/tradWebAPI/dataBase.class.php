@@ -35,6 +35,6 @@ class dataBase
     }
     public function delete($sql){
         $res=mysql_query($sql);
-        return $res;
+        return mysql_affected_rows();
     }
 }

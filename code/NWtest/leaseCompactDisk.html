@@ -1,0 +1,189 @@
+<html>
+<head>
+
+<!-- <link href="https://cdn.bootcss.com/twitter-bootstrap/4.2.1/css/bootstrap.css" rel="stylesheet">  -->
+<!-- <script src="../js/jquery.min.js"></script>  -->
+<!-- <script src="../js/ajax.js"></script>  -->
+<!-- <script src="../js/angular.min.js"></script>  -->
+<!-- <script type="text/javascript" src="ui/js/npm.js"></script>  -->
+<link href="ui/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="ui/css/bootstrap-themes.css" rel="stylesheet" type="text/css">
+<link href="ui/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="ui/js/npm.js"></script>
+<script type="text/javascript" src="ui/js/bootstrap.js"></script>
+<script type="text/javascript" src="ui/js/bootstrap.min.js"></script>
+
+<title>影碟出租</title>
+	<meta charset="UTF-8">
+
+</head>
+<body>
+<div class="jumbotron">
+  <h1>影碟出租管理系统</h1>
+  <p>Video rental Management System</p>
+    <a href="adminLogin.html" class="btn btn-primary" role="button">注销登录</a>
+</div>
+<ul class="nav nav-pills nav-justified " style="margin-top:-30px;">
+  <li role="presentation" ><a href="addCompactDisk.html">影碟入库</a></li>
+  <li role="presentation"><a href="updateCompactDisk.html">影碟更新</a></li>
+  <li role="presentation"><a href="deleteCompactDisk.html">影碟删除</a></li>
+  <li role="presentation"class="active"><a href="leaseCompactDisk.html">影碟出租</a></li>
+  <li role="presentation"><a href="returnCompactDisk.html">影碟退还</a></li>
+   <li role="presentation"><a href="searchOrder.html">订单查询</a></li>
+</ul>
+
+
+
+<form  name="" id="rentOutSearch">
+<div class="container">
+  <div class="form-group">
+    <label for="exampleInputEmail1" id="search_1">搜索影片：</label>
+    <input type="text" class="form-control"  placeholder="搜索影片" id="rentOutSearch_1">
+  </div>
+  <input type="submit" class="btn btn-default"  value="搜索" id="search_2">
+</div>
+<div class="input_1">
+</form >
+<form id="rentOutMessage" >
+  <div class="form-group" id="username1" >
+    <label for="exampleInputEmail1">姓名</label>
+    <input type="text" class="form-control" id="username" >
+  </div>
+ <div class="form-group" id="rental_date1">
+    <label for="exampleInputEmail1">出租日期</label>
+    <input type="text" class="form-control" id="rental_date" >
+  </div> <div class="form-group"id="return_date1">
+    <label for="exampleInputEmail1">归还日期</label>
+    <input type="text" class="form-control" id="return_date" >
+  </div> <div class="form-group" id="rental1">
+    <label for="exampleInputEmail1">租金</label>
+    <input type="text" class="form-control" id="rental" >
+  </div> <div class="form-group" id="deposit1">
+    <label for="exampleInputEmail1">押金</label>
+    <input type="text" class="form-control" id="deposit" >
+  </div> <div class="form-group" id="receipt_id1">
+    <label for="exampleInputEmail1">发票号</label>
+    <input type="text" class="form-control" id="receipt_id" >
+  </div> <div class="form-group" id="phone1">
+    <label for="exampleInputEmail1">手机号</label>
+    <input type="text" class="form-control" id="phone" >
+  </div>
+  
+  
+  <button type="submit" class="btn btn-default" id="submit1">提交</button>
+</form>
+
+
+
+
+
+
+</div>
+
+</form>
+<script >
+document.getElementById("username1").style.visibility="hidden";//显示
+document.getElementById("rental_date1").style.visibility="hidden";//显示
+document.getElementById("return_date1").style.visibility="hidden";//显示
+document.getElementById("rental1").style.visibility="hidden";//显示
+document.getElementById("deposit1").style.visibility="hidden";//显示
+document.getElementById("receipt_id1").style.visibility="hidden";//显示
+document.getElementById("phone1").style.visibility="hidden";//显示
+document.getElementById("submit1").style.visibility="hidden";//显示
+document.getElementById('rentOutSearch').addEventListener("submit",rentOutSearch);
+document.getElementById('rentOutMessage').addEventListener("submit",rentOutMessage);
+var Movie_id=0;
+function rentOutSearch(e){
+		e.preventDefault(); 
+		var video_name = document.getElementById('rentOutSearch_1').value; 
+		var mark = 1;
+		var params = {
+						"video_name" : video_name,
+						"mark": 1
+						}
+		//console.log(params);
+var xhr = new XMLHttpRequest();
+  
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState==4 && xhr.status==200) {
+
+		var user = JSON.parse(xhr.responseText);
+
+		 if(user.code==200){
+			 Movie_id=user.res[0][0];
+				<!-- window.alert("影碟存在！");   -->
+				
+					document.getElementById("search_1").style.visibility="hidden";//隐藏 
+					document.getElementById("rentOutSearch_1").style.visibility="hidden";//隐藏 
+					document.getElementById("search_2").style.visibility="hidden";//隐藏 
+					
+　　				document.getElementById("username1").style.visibility="visible";//显示
+　　				document.getElementById("rental_date1").style.visibility="visible";//显示
+　　				document.getElementById("return_date1").style.visibility="visible";//显示
+　　				document.getElementById("rental1").style.visibility="visible";//显示
+　　				document.getElementById("deposit1").style.visibility="visible";//显示
+　　				document.getElementById("receipt_id1").style.visibility="visible";//显示
+　　				document.getElementById("phone1").style.visibility="visible";//显示
+　　				document.getElementById("submit1").style.visibility="visible";//显示
+			} 
+			else{ 
+				window.alert("影碟不存在！");  
+	}
+
+    }
+  }
+
+  xhr.open('POST',"http://127.0.0.1/tradWebAPI/searchCompactDisk.php",true);
+  xhr.setRequestHeader("Content-Type","application/json");
+  xhr.send(JSON.stringify(params));
+
+  
+	}
+function rentOutMessage(e){
+		e.preventDefault(); 
+		var username = document.getElementById('username').value; 
+		var rental_date = document.getElementById('rental_date').value; 
+		var return_date = document.getElementById('return_date').value; 
+		var rental = document.getElementById('rental').value; 
+		var deposit = document.getElementById('deposit').value; 
+		var receipt_id = document.getElementById('receipt_id').value; 
+		var phone = document.getElementById('phone').value; 
+		var id = Movie_id
+		var params = {
+						"username" : username,
+						"rental_date" : rental_date,
+						"return_date" : return_date,
+						"rental" : rental,
+						"deposit" : deposit,
+						"receipt_id" : receipt_id,
+						"phone" : phone,
+						"video_disk_id": id
+						}
+		console.log(params);
+var xhr = new XMLHttpRequest();
+  
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState==4 && xhr.status==200) {
+	var users = xhr.responseText; 
+	console.log(users);
+	var user = JSON.parse(xhr.responseText); 
+	console.log(user);
+	 if(user.code==200){
+		alert("操作成功！");	
+		}
+       else if(user.code==503){
+	   alert("操作失败！");	
+	   }
+
+    }
+  }
+
+  xhr.open('POST',"http://127.0.0.1/tradWebAPI/leaseCompactDisk.php",true);
+  xhr.setRequestHeader("Content-Type","application/json");
+  xhr.send(JSON.stringify(params));
+
+  
+	}
+</script>
+</body>
+</html>

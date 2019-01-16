@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<link href="ui/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="ui/css/bootstrap-themes.css" rel="stylesheet" type="text/css">
+<link href="ui/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="ui/js/npm.js"></script>
+<script type="text/javascript" src="ui/js/bootstrap.js"></script>
+<script type="text/javascript" src="ui/js/bootstrap.min.js"></script>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Search Compact Disk</title>
+	<link rel="stylesheet" type="text/css" href="public.css">
+</head>
+<body>
+<div class="jumbotron">
+  <h1>影碟出租管理系统</h1>
+  <p>Video rental Management System</p>
+</div>
+<ul class="nav nav-pills nav-justified " style="margin-top:-30px;">
+  <li role="presentation" class="active"><a href="searchCompactDisk.html">影碟查询</a></li>
+  <li role="presentation"><a href="videoRecommend.html">影碟推荐</a></li>
+  <li role="presentation"><a href="playCompactDisk.html">影碟预览</a></li>
+</ul>
+	<script type="text/javascript">
+		function searchCompactDisk() {
+			var radio=document.getElementsByName("mark");
+		    var mark=null;
+		    for(var i=0;i<radio.length;i++){
+		        if(radio[i].checked==true) {
+		            mark=radio[i].value;
+		            break;
+		          }
+		    }
+			var value = document.getElementById('value').value;
+
+
+			if(mark == 1) {
+				var data = {
+					"mark" : 1,
+					"video_name" : value
+				}
+				return data;
+			}else if (mark == 2) {
+				var data = {
+					"mark" :2,
+					"lead_actor": value
+				}
+				return data;
+			}else if (mark == 3) {
+				var data = {
+					"mark" : 3,
+					"serial_number" : value
+				}
+				return data;
+			}
+		}
+		function ajax_method(url, data) {
+		  var xhr = new XMLHttpRequest();
+		  
+		  xhr.onreadystatechange = function() {
+		    if(xhr.readyState==4 && xhr.status==200) {
+		        var data = JSON.parse(xhr.responseText);
+		        var output = '';
+		        if (data.code == 200) {
+		            
+		            if (data.res != null) {                      
+		              for(var i in data.res) {
+		                output += `
+		                  <ul>
+		                    <li>影碟预览链接 : ${data.res[i].position}</li>
+		                    <li>影碟价格 : ${data.res[i].price}</li>
+		                    <li>影碟名称 : ${data.res[i].video_name}</li>
+		                    <li>主演 : ${data.res[i].lead_actor}</li>
+		                    <li>库存 : ${data.res[i].stock}</li>
+		                    <li>影碟编号 : ${data.res[i].serial_number}</li>
+		                  </ul>
+		                `;
+		              }
+		              document.getElementById("result").innerHTML = output;
+		            }else{
+		              alert(data.state);
+		            }
+		        } else {
+		            alert(data.state);
+		        }
+		    }
+		  }
+
+		  xhr.open("POST", url, true);
+		 
+		  xhr.setRequestHeader("Content-Type","application/json");
+		  xhr.send(JSON.stringify(data));
+		
+		}
+	</script>
+
+	<form>
+		<label><input type="radio" name="mark" value="1">片名查询</label>
+		<label><input type="radio" name="mark" value="2">主演名查询</label>
+		<label><input type="radio" name="mark" value="3">影碟编号查询</label><br>
+		<input type="text" id="value"><br>
+		<input type="button" value="Submit" onclick="ajax_method('http://127.0.0.1/tradWebAPI/searchCompactDisk.php', searchCompactDisk())">
+		<div id="result"></div>
+
+	</form>
+</body>
+</html>

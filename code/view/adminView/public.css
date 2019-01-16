@@ -1,0 +1,48 @@
+
+form {
+
+  width:300px;
+
+  margin: 10px auto;
+
+}
+
+ 
+
+input {
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  border:1px solid #ccc;
+
+  font-size:15px;
+
+  width:300px;
+
+  min-height:20px;
+
+  display:block;
+
+  margin-bottom:5px;
+
+  margin-top:5px;
+
+  outline: none;
+
+ 
+
+  -webkit-border-radius:5px;
+
+  border-radius:5px;
+
+}
+
+ 
+
+input[type=submit] {
+
+  background:none;
+
+  padding:10px;
+
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<link href="ui/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="ui/css/bootstrap-themes.css" rel="stylesheet" type="text/css">
+<link href="ui/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="ui/js/npm.js"></script>
+<script type="text/javascript" src="ui/js/bootstrap.js"></script>
+<script type="text/javascript" src="ui/js/bootstrap.min.js"></script>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Add Compact Disk</title>
+	<link rel="stylesheet" type="text/css" href="public.css">
+</head>
+<body>
+<div class="jumbotron">
+  <h1>影碟出租管理系统</h1>
+  <p>Video rental Management System</p>
+  <a href="adminLogin.html" class="btn btn-primary" role="button">注销登录</a>
+</div>
+<ul class="nav nav-pills nav-justified " style="margin-top:-30px;">
+  <li role="presentation" class="active"><a href="addCompactDisk.html">影碟入库</a></li>
+  <li role="presentation"><a href="updateCompactDisk.html">影碟更新</a></li>
+  <li role="presentation"><a href="deleteCompactDisk.html">影碟删除</a></li>
+  <li role="presentation"><a href="leaseCompactDisk.html">影碟出租</a></li>
+  <li role="presentation"><a href="returnCompactDisk.html">影碟退还</a></li>
+    <li role="presentation"><a href="searchOrder.html">订单查询</a></li>
+</ul>
+
+
+	<script type="text/javascript">
+		function addCompactDisk() {
+			var position = document.getElementById('position').value;
+			var price = document.getElementById('price').value;
+			var video_name = document.getElementById('video_name').value;
+			var lead_actor = document.getElementById('lead_actor').value;
+			var stock = document.getElementById('stock').value;
+			var input_goods = document.getElementById('input_goods').value;
+			var serial_number = document.getElementById('serial_number').value;
+		    // 影碟入库
+			var data = {
+				"position" : position,
+				"price": price,
+				"video_name" : video_name,
+				"lead_actor" : lead_actor,
+				"stock" : stock,
+				"input_goods" : input_goods,
+				"serial_number" : serial_number
+			}
+
+			return data;
+		}
+
+		function ajax_method(url, data) {
+		  var xhr = new XMLHttpRequest();
+		  
+		  xhr.onreadystatechange = function() {
+		    if(xhr.readyState==4 && xhr.status==200) {
+		        var data = JSON.parse(xhr.responseText);
+		        if (data.code == 200) {                   
+		            alert(data.state);
+		        } else {
+		            alert(data.state);
+		        }
+		    }
+		  }
+
+		  xhr.open("POST", url, true);		  
+		  xhr.setRequestHeader("Content-Type","application/json");
+		  xhr.send(JSON.stringify(data));
+		}
+	</script>
+
+	<form>
+		预览链接:<br>
+		<input type="text" id="position"><br>
+		价格:<br>
+		<input type="text" id="price"><br>
+		影碟名称:<br>
+		<input type="text" id="video_name"><br>
+		主演:<br>
+		<input type="text" id="lead_actor"><br>
+		存货:<br>
+		<input type="text" id="stock"><br>
+		进货数量:<br>
+		<input type="text" id="input_goods"><br>
+		影碟编号:<br>
+		<input type="text" id="serial_number"><br>
+		<input type="button" value="提交" onclick="ajax_method('http://127.0.0.1/tradWebAPI/addCompactDisk.php', addCompactDisk())">
+	</form>
+
+</body>
+</html>

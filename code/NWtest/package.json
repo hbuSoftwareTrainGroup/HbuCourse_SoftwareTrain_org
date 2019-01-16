@@ -1,5 +1,5 @@
 {
-  "main": "index.html",
+  "main": "adminLogin.html",
   "name": "appname",
   "description": "这是应用描述，main表示入口文件",
   "version": "0.0.1",
